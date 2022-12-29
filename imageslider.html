@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Add some style to the slider */
+    .slider {
+      width: 100%;
+      height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-image {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+    .prev-button, .next-button {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      line-height: 50px;
+      border: none;
+      outline: none;
+    }
+    .prev-button {
+      left: 10px;
+    }
+    .next-button {
+      right: 10px;
+    }
+
+    /* Add some style to the navigation menu */
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+    position: relative;
+  }
+  .nav-menu-item:hover {
+    background-color: darkgrey;
+    color: white;
+  }
+  .nav-menu-item .nav-submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu-item:hover .nav-submenu {
+    display: block;
+  }
+  .nav-submenu-item {
+    background-color: lightgrey;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+  }
+  .nav-submenu-item:hover {
+    background-color: darkgrey;
+    color: white;
+  }
+ul li a{
+  text-decoration:none;
+}
+  </style>
+}
+</head>
+<body>
+ <nav>
+  <ul class="nav-menu">
+    <li class="nav-menu-item"><i class="fas fa-home"></i><a href="#">Home</a></li>
+    <li class="nav-menu-item"><a href="#">Gallery</a></li>
+    <li class="nav-menu-item"><a href="#">Downloads</a>    </li>
+    <li class="nav-menu-item"><a href="#">Location</a></li>
+    <li class="nav-menu-item"><a href="#">Contact Us</a></li>
+  </ul>
+</nav>
+
+  <!-- Add the slider element and images -->
+  <div class="slider">
+    <img src="image1.jpg" alt="Image 1" class="slider-image">
+    <img src="image2.jpg" alt="Image 2" class="slider-image">
+    <img src="image3.jpg" alt="Image 3" class="slider-image">
+
+    <!-- Add the previous and next buttons -->
+    <button class="prev-button">&lt;</button>
+    <button class="next-button">&gt;</button>
+  </div>
+
+  <!-- Add the JavaScript code -->
+  <script>
+    // Get the elements that we will need
+    const images = document.querySelectorAll('.slider-image');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
+
+    // Set the initial index to 0
+    let currentIndex = 0;
+
+    // Function to show the previous image
+    function showPrevImage() {
+      // Decrement the index
+      currentIndex--;
+
+      // If the index is negative, set it to the last image
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      }
+
+      // Update the image
+      updateImage();
+    }
+
+    // Function to show the next image
+    function showNextImage() {
+      // Increment the index
+      currentIndex++;
+
+      // If the index is greater than or equal to the number of images, set it to the first image
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+
+      // Update the image
+      updateImage();
+    }
+
+    // Function to update the image
+    function updateImage() {
+      // Loop through all the images and hide them
+      images.forEach(image => {
+        image.style.display = 'none';
+      });
+
+      // Show the current image
+      images[currentIndex].style.display = 'block';
+}
+
+// Add event listeners to the buttons
+prevButton.addEventListener('click', showPrevImage);
+nextButton.addEventListener('click', showNextImage);
+
+// Show the initial image
+updateImage();
+
+
+
+</script>
+</body>
+</html>
