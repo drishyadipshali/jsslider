@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Popup form </title>
+	<style>
+
+		body {
+  background-image: url("https://source.unsplash.com/random"); /* Set a random image from Unsplash as the background */
+  background-size: cover; /* Cover the entire body with the background image */
+  animation: slideIn 5s; /* Add an animation to fade the image in */
+}
+
+/* Add an animation to fade the image in */
+@keyframes slideIn {
+  from {
+    margin-left: 100%; /* Start the image with 0% opacity */
+  }
+  to {
+    margin-left: 0%; /* Fade the image to 100% opacity */
+  }
+}
+
+	#myButton {
+  display: block; /* Change to block to center the button */
+  margin: 0 auto; /* Center the button horizontally */
+  background: linear-gradient(to right, #f6d365, #fda085); /* 3D gradient background */
+  border: none;
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 4px #999; /* Add a drop shadow */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer; /* Add a cursor on hover */
+  transition: 0.3s; /* Add a transition effect on hover */
+}
+
+#myButton:hover {
+  box-shadow: 0 8px #666; /* Change the drop shadow on hover */
+  transform: translateY(-4px); /* Add a 3D effect on hover */
+}
+
+#myButton:active {
+  box-shadow: 0 4px #666; /* Change the drop shadow on active (clicked) state */
+  transform: translateY(4px); /* Add a 3D effect on active (clicked) state */
+}
+
+
+#myPopup {
+  position: fixed; /* Fix the position of the pop-up */
+  top: 10%; /* Center the pop-up vertically */
+  left: 20%; /* Center the pop-up horizontally */
+  transform: translate(-5%, -5%); /* Center the pop-up horizontally and vertically */
+  width: 50%; /* Set the width of the pop-up */
+  height: 50%; /* Set the height of the pop-up */
+  background-color: white;
+  border: 1px solid black;
+/*  overflow-y: scroll; /* Add a scrollbar if the content is taller than the pop-up */*/
+  z-index: 1; /* Set the z-index to display the pop-up on top of other elements */
+}
+
+/* Add an animation to zoom the pop-up in */
+@keyframes zoomIn {
+  from {
+    transform: scale(0); /* Scale the pop-up down to 0 */
+  }
+  to {
+    transform: scale(1); /* Scale the pop-up up to its normal size */
+  }
+}
+
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color:white;
+  border-radius:10px;
+}
+
+label {
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #3498db, #9b59b6); /* Blue gradient background */
+  font-size:25px;
+}
+
+input[type="text"] {
+  height: 30px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+input[type="submit"] {
+  background: linear-gradient(to right, #e74c3c, #9b0000); /* Red gradient background */
+  border: none;
+  border-radius: 5px; /* Add rounded corners */
+  box-shadow: 0 4px #999; /* Add a drop shadow */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer; /* Add a cursor on hover */
+  transition: 0.3s; /* Add a transition effect on hover */
+}
+
+input[type="submit"]:hover {
+  box-shadow: 0 8px #666; /* Change the drop shadow on hover */
+  transform: translateY(-4px); /* Add a 3D effect on hover */
+}
+
+input[type="submit"]:active {
+  box-shadow: 0 4px #666; /* Change the drop shadow on active (clicked) state */
+  transform: translateY(4px); /* Add a 3D effect on active (clicked) state */
+}
+
+	</style>
+</head>
+<body>
+<button id="myButton">Click me</button>
+
+<div id="myPopup" style="display: none;">
+  <form>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br>
+    <label for="gender">Gender:</label><br>
+    <select id="gender" name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select><br>
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob"><br>
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="Submit">
+  </form> 
+</div>
+
+
+
+<script>
+// Get the button that will trigger the pop-up
+var button = document.getElementById("myButton");
+
+// Add an event listener to the button
+button.addEventListener("click", function() {
+  // Get the pop-up window
+  var popup = document.getElementById("myPopup");
+  
+  // Display the pop-up window with a zoom effect
+  popup.style.display = "block";
+  popup.style.animation = "zoomIn 0.5s forwards";
+});
+
+
+</script>
+</body>
+</html>
